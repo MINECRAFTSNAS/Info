@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#490404">
+  <title>XPJ · 澳门新葡京娱乐城｜整活广告</title>
+  <style>
+    :root {
+      --red: #a90c0c;
+      --red-deep: #4a0303;
+      --red-dark: #260101;
+      --gold: #ffd65a;
+      --gold-light: #fff0a6;
+      --gold-dark: #bf6d00;
+      --cream: #fff9dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% 24%, #ffdb70 0%, #e79c1d 15%, #ad1a0a 42%, #4a0303 72%, #1b0101 100%);
+      color: var(--cream);
+      font-family: "Microsoft YaHei UI", "Microsoft YaHei", "SimHei", sans-serif;
+      text-align: center;
+      user-select: none;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      width: 190vmax;
+      height: 190vmax;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 223, 111, 0.15) 0deg 5deg,
+        transparent 5deg 12deg
+      );
+      transform: translate(-50%, -50%);
+      animation: sunSpin 48s linear infinite;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(180deg, rgba(38, 1, 1, 0.15), rgba(22, 0, 0, 0.72)),
+        radial-gradient(ellipse at center, transparent 35%, rgba(24, 0, 0, 0.62) 100%);
+      pointer-events: none;
+    }
+
+    .parody-bar {
+      position: relative;
+      z-index: 10;
+      padding: 7px 12px;
+      background: #160202;
+      border-bottom: 2px solid var(--gold-dark);
+      color: #ffd98a;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .stage {
+      position: relative;
+      z-index: 2;
+      width: min(980px, calc(100% - 30px));
+      margin: 34px auto 28px;
+    }
+
+    .ad {
+      position: relative;
+      overflow: hidden;
+      padding: 16px 16px 20px;
+      border: 6px double var(--gold);
+      outline: 3px solid #7e0b0b;
+      background:
+        linear-gradient(135deg, rgba(255, 230, 120, 0.1), transparent 30%),
+        linear-gradient(180deg, #b51111 0%, #850808 48%, #5e0303 100%);
+      box-shadow:
+        0 0 0 4px #3a0202,
+        0 0 42px rgba(255, 198, 47, 0.46),
+        0 28px 70px rgba(0, 0, 0, 0.55),
+        inset 0 0 65px rgba(0, 0, 0, 0.28);
+      animation: adEnter 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .ad::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: -60%;
+      background: linear-gradient(115deg, transparent 42%, rgba(255, 238, 164, 0.18) 49%, transparent 56%);
+      transform: translateX(-38%);
+      animation: adShine 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .ad::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 10px;
+      border: 1px solid rgba(255, 226, 120, 0.38);
+      pointer-events: none;
+    }
+
+    .ad-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border: 2px solid #e3a523;
+      background: #1b0202;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      line-height: 30px;
+      white-space: nowrap;
+      box-shadow: inset 0 0 18px rgba(255, 172, 35, 0.18);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      flex: none;
+      gap: 26px;
+      padding: 0 13px;
+    }
+
+    .marquee .sep {
+      color: #ff7826;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 24px 0 9px;
+    }
+
+    .logo {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 94px;
+      height: 94px;
+      flex: none;
+      border: 3px solid #ffe681;
+      background:
+        radial-gradient(circle at 34% 25%, #ffec92, #ffbd1d 38%, #ca5e00 65%, #6a1500 100%);
+      color: #610000;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: 36px;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      box-shadow: 0 0 0 5px #7d0909, 0 0 25px rgba(255, 213, 72, 0.7);
+      transform: rotate(-7deg) skewX(-4deg);
+      text-shadow: 0 2px 0 #fff0a2;
+      animation: logoBob 3.8s ease-in-out infinite;
+    }
+
+    .logo::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(108, 23, 0, 0.38);
+    }
+
+    .brand-copy {
+      text-align: left;
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      color: var(--gold);
+      font-size: clamp(26px, 4.6vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.06;
+      text-shadow:
+        0 2px 0 #9e3500,
+        0 4px 0 #561400,
+        0 0 24px rgba(255, 220, 84, 0.6);
+    }
+
+    .brand-copy p {
+      margin: 8px 0 0;
+      color: #ffeeb5;
+      font-size: clamp(12px, 2vw, 17px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-copy p b {
+      display: inline-block;
+      padding: 2px 7px;
+      background: var(--gold);
+      color: #8a1000;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: 1.08em;
+      font-weight: 400;
+      transform: rotate(-3deg);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 8px;
+      color: #ffd66a;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffd66a);
+    }
+
+    .eyebrow::after {
+      transform: scaleX(-1);
+    }
+
+    .headline {
+      margin: 8px 0 12px;
+      color: #ffd94e;
+      font-size: clamp(52px, 10vw, 108px);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 0.97;
+      text-shadow:
+        0 3px 0 #b54f00,
+        0 6px 0 #7b2500,
+        0 9px 0 #4a1100,
+        0 15px 28px rgba(0, 0, 0, 0.45);
+      -webkit-text-stroke: 1px rgba(255, 247, 187, 0.55);
+      transform: rotate(-1.2deg);
+      animation: headlineBob 4.2s ease-in-out infinite;
+    }
+
+    .headline .spark {
+      display: inline-block;
+      margin: 0 0.08em;
+      color: #fff4ad;
+      font-size: 0.72em;
+      transform: translateY(-0.08em) rotate(9deg);
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    .games {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 auto 17px;
+    }
+
+    .game {
+      padding: 7px 13px;
+      border: 1px solid #f2b12c;
+      background: linear-gradient(180deg, #7f0a0a, #3d0202);
+      color: #ffe38b;
+      font-size: clamp(11px, 1.5vw, 14px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: inset 0 1px 0 rgba(255, 237, 160, 0.28), 0 3px 0 #2b0101;
+      transform: rotate(var(--tilt, 0deg));
+      animation: chipIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .game:nth-child(1) { animation-delay: 0.18s; }
+    .game:nth-child(2) { animation-delay: 0.26s; }
+    .game:nth-child(3) { animation-delay: 0.34s; }
+    .game:nth-child(4) { animation-delay: 0.42s; }
+    .game:nth-child(5) { animation-delay: 0.5s; }
+    .game:nth-child(6) { animation-delay: 0.58s; }
+
+    .game:nth-child(1) { --tilt: -1.5deg; }
+    .game:nth-child(2) { --tilt: 1deg; }
+    .game:nth-child(3) { --tilt: -1deg; }
+    .game:nth-child(4) { --tilt: 1.5deg; }
+    .game:nth-child(5) { --tilt: -0.5deg; }
+    .game:nth-child(6) { --tilt: 1deg; }
+
+    .jackpot {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2px 18px;
+      padding: 12px 18px 14px;
+      border: 2px solid #ffc534;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 203, 55, 0.045) 0 1px, transparent 1px 5px),
+        #190202;
+      box-shadow:
+        inset 0 0 24px rgba(255, 152, 0, 0.14),
+        0 0 0 3px #650606;
+    }
+
+    .jackpot-label {
+      flex-basis: 100%;
+      color: #ffdb82;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+    }
+
+    .jackpot strong {
+      color: #ffe466;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: clamp(45px, 8.5vw, 86px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 3px 0 #ab3500,
+        0 6px 0 #5d1400,
+        0 0 25px rgba(255, 213, 64, 0.35);
+      animation: jackpotPulse 1.8s ease-in-out infinite;
+    }
+
+    .jackpot strong span {
+      color: #ff7b21;
+      font-size: 0.42em;
+      vertical-align: 0.22em;
+    }
+
+    .jackpot-number {
+      display: inline-block;
+      font: inherit;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: inherit;
+    }
+
+    .jackpot .slash {
+      color: #c68a27;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .jackpot small {
+      flex-basis: 100%;
+      color: #f6c365;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .lucky {
+      margin: 20px 0 15px;
+      color: #fff0a4;
+      font-size: clamp(17px, 2.8vw, 26px);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 0 #741500, 0 0 18px rgba(255, 205, 62, 0.5);
+    }
+
+    .lucky b {
+      color: #ff5b2c;
+      animation: blink 0.85s steps(1) infinite;
+    }
+
+    .lucky-meter {
+      width: min(430px, 88%);
+      margin: 0 auto 17px;
+      text-align: left;
+    }
+
+    .lucky-meter-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 5px;
+      color: #ffd66e;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .lucky-meter-head b {
+      color: #fff1a0;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .lucky-meter-track {
+      position: relative;
+      height: 9px;
+      overflow: hidden;
+      border: 1px solid #ffc13b;
+      background: #290202;
+      box-shadow: inset 0 0 10px rgba(255, 160, 20, 0.14);
+    }
+
+    .lucky-meter-track i {
+      display: block;
+      width: 97%;
+      height: 100%;
+      background:
+        linear-gradient(90deg, #cf4b00, #ffb51d 45%, #fff1a1 75%, #ffbe2e);
+      box-shadow: 0 0 14px rgba(255, 210, 64, 0.7);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: meterFill 2s 0.8s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+    }
+
+    .lucky-meter-track i::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 100%;
+      margin-left: -80px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      animation: meterShine 1.8s 2.9s ease-in-out infinite;
+    }
+
+    .lucky-meter small {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 226, 150, 0.7);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .cta-row {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .free-sticker {
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 15px);
+      display: grid;
+      place-items: center;
+      width: 82px;
+      height: 82px;
+      flex: none;
+      border: 2px solid #fff0ac;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 25%, #fff4b1, #ffd12f 32%, #ff6f00 68%, #a51b00 100%);
+      color: #8a0b00;
+      line-height: 1;
+      box-shadow: 0 0 0 4px #7f0909, 0 0 22px rgba(255, 207, 45, 0.55);
+      translate: 0 -50%;
+      rotate: 9deg;
+      animation: stickerBob 2.7s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .free-sticker small {
+      display: block;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .free-sticker strong {
+      display: block;
+      margin: 2px 0;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 0 #fff5bf;
+    }
+
+    .cta {
+      position: relative;
+      display: inline-block;
+      min-width: 230px;
+      padding: 13px 35px 14px;
+      border: 3px solid #ffe699;
+      border-radius: 4px;
+      background:
+        linear-gradient(180deg, #fff3ac 0%, #ffd448 18%, #ff9d12 58%, #cf5900 100%);
+      color: #830b00;
+      font-size: clamp(20px, 3.1vw, 30px);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 4px #9c1a04,
+        0 7px 0 #5e2100,
+        0 12px 25px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(255, 196, 47, 0.46);
+      text-shadow: 0 1px 0 #fff2a3;
+      transform: rotate(-1deg);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      animation: ctaGlow 1.4s ease-in-out infinite alternate;
+    }
+
+    .cta:hover {
+      transform: rotate(0deg) translateY(-2px) scale(1.02);
+      box-shadow:
+        0 0 0 4px #9c1a04,
+        0 9px 0 #5e2100,
+        0 16px 30px rgba(0, 0, 0, 0.38),
+        0 0 45px rgba(255, 210, 64, 0.62);
+    }
+
+    .cta:active {
+      transform: rotate(0deg) translateY(4px) scale(0.99);
+      box-shadow:
+        0 0 0 4px #9c1a04,
+        0 3px 0 #5e2100,
+        0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .domain {
+      margin: 18px 0 0;
+      color: #ffdda0;
+      font-family: "Courier New", monospace;
+      font-size: clamp(11px, 1.7vw, 14px);
+      letter-spacing: 0.12em;
+    }
+
+    .domain::before,
+    .domain::after {
+      content: "◆";
+      margin: 0 8px;
+      color: #ff8a24;
+      font-size: 0.72em;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      padding: 0 18px;
+      color: rgba(255, 240, 194, 0.66);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .footer strong {
+      color: #ffd36e;
+    }
+
+    .stamp {
+      display: inline-block;
+      margin-bottom: 7px;
+      padding: 4px 9px;
+      border: 1px dashed rgba(255, 211, 110, 0.5);
+      color: #ffd36e;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    .coins {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .coin {
+      position: absolute;
+      top: -30px;
+      left: var(--x);
+      display: grid;
+      place-items: center;
+      width: var(--s);
+      height: var(--s);
+      border: 2px solid #ffe99b;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 28%, #fff2a9, #ffca29 42%, #b86c00 100%);
+      color: #7b2300;
+      font-family: Georgia, serif;
+      font-size: calc(var(--s) * 0.58);
+      font-weight: 700;
+      line-height: 1;
+      opacity: var(--o, 0.7);
+      box-shadow: 0 0 8px rgba(255, 207, 55, 0.25);
+      animation: coinFall var(--t) linear var(--d) infinite;
+    }
+
+    .stars {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      top: var(--y);
+      left: var(--x);
+      color: #fff1a1;
+      font-size: var(--s);
+      opacity: 0.24;
+      animation: blink var(--t) steps(1) var(--d) infinite;
+    }
+
+    .scare[hidden] {
+      display: none;
+    }
+
+    .scare {
+      position: fixed;
+      z-index: 90;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 48%, #260000 0%, #060000 58%, #000 100%);
+      animation: scareShake 0.55s 0.12s 2;
+    }
+
+    .scare::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.23;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 3px,
+        rgba(0, 0, 0, 0.65) 3px,
+        rgba(0, 0, 0, 0.65) 4px
+      );
+      pointer-events: none;
+    }
+
+    .scare::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 50% 47%, rgba(255, 18, 18, 0.55), transparent 62%);
+      animation: redFlash 1s ease-out both;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .scare-face {
+      position: relative;
+      z-index: 2;
+      width: min(58vmin, 520px);
+      aspect-ratio: 1;
+      animation: scareZoom 0.95s cubic-bezier(0.16, 1.35, 0.3, 1) both;
+    }
+
+    .scare-face::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -20%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.36), transparent 65%);
+      filter: blur(22px);
+    }
+
+    .scare-face img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated;
+      filter: saturate(1.5) contrast(1.18) drop-shadow(0 0 35px rgba(255, 20, 20, 0.7));
+    }
+
+    .scare-copy {
+      position: absolute;
+      z-index: 3;
+      right: 0;
+      bottom: 8%;
+      left: 0;
+      color: #ff2c21;
+      font-size: clamp(28px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      line-height: 1.1;
+      text-align: center;
+      text-shadow:
+        0 0 12px #ff0000,
+        0 0 36px rgba(255, 0, 0, 0.7);
+      animation: scareText 0.55s 0.3s ease both;
+    }
+
+    .scare-copy span {
+      display: block;
+      margin-top: 9px;
+      color: #ffd7d7;
+      font-size: 0.33em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 12px rgba(255, 40, 40, 0.65);
+    }
+
+    body.is-scaring {
+      overflow: hidden;
+    }
+
+    .modal[hidden] {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(16, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-card {
+      width: min(460px, 100%);
+      padding: 28px 24px 24px;
+      border: 3px double #ffd15a;
+      background:
+        linear-gradient(180deg, #7f0909, #360202);
+      box-shadow: 0 0 0 5px #320101, 0 24px 80px rgba(0, 0, 0, 0.7);
+      transform: rotate(-0.6deg);
+    }
+
+    .modal-card h2 {
+      margin: 0 0 10px;
+      color: #ffe474;
+      font-size: clamp(28px, 7vw, 44px);
+      line-height: 1;
+      text-shadow: 0 3px 0 #811800;
+    }
+
+    .modal-card p {
+      margin: 0 auto 18px;
+      color: #fff0c3;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .modal-card strong {
+      color: #ffd35a;
+    }
+
+    .modal-close {
+      padding: 10px 22px;
+      border: 2px solid #ffe49a;
+      background: #ffd044;
+      color: #700700;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #7b1c00;
+    }
+
+    .modal-close:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #7b1c00;
+    }
+
+    @keyframes adEnter {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes logoBob {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -5px; }
+    }
+
+    @keyframes headlineBob {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -2px; }
+    }
+
+    @keyframes chipIn {
+      from { opacity: 0; translate: 0 8px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+
+    @keyframes meterFill {
+      to { transform: scaleX(1); }
+    }
+
+    @keyframes meterShine {
+      0% { translate: 0 0; }
+      45%, 100% { translate: 520px 0; }
+    }
+
+    @keyframes stickerBob {
+      0%, 100% { translate: 0 -50%; rotate: 9deg; }
+      50% { translate: 0 -57%; rotate: 5deg; }
+    }
+
+    @keyframes scareShake {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(-8px, 3px); }
+      40% { transform: translate(7px, -4px); }
+      60% { transform: translate(-5px, -2px); }
+      80% { transform: translate(4px, 3px); }
+    }
+
+    @keyframes scareZoom {
+      0% { opacity: 0; transform: scale(0.12) rotate(-8deg); }
+      48% { opacity: 1; transform: scale(1.16) rotate(4deg); }
+      68% { transform: scale(0.98) rotate(-2deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes redFlash {
+      0% { opacity: 0; }
+      18% { opacity: 0.95; }
+      100% { opacity: 0.26; }
+    }
+
+    @keyframes scareText {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes sunSpin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes adShine {
+      0%, 18% { transform: translateX(-48%); }
+      55%, 100% { transform: translateX(55%); }
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.18; }
+    }
+
+    @keyframes jackpotPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.035); }
+    }
+
+    @keyframes ctaGlow {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.1); }
+    }
+
+    @keyframes coinFall {
+      0% { transform: translateY(-40px) rotate(0deg); }
+      100% { transform: translateY(920px) rotate(420deg); }
+    }
+
+    @media (max-width: 640px) {
+      .stage {
+        margin-top: 22px;
+      }
+
+      .ad {
+        padding: 10px 10px 16px;
+        border-width: 4px;
+      }
+
+      .brand-row {
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .logo {
+        width: 66px;
+        height: 66px;
+        font-size: 25px;
+      }
+
+      .brand-copy h1 {
+        letter-spacing: 0.02em;
+      }
+
+      .eyebrow {
+        margin-top: 12px;
+      }
+
+      .headline {
+        margin-top: 6px;
+      }
+
+      .games {
+        gap: 5px;
+      }
+
+      .game {
+        padding: 5px 8px;
+      }
+
+      .jackpot {
+        gap: 1px 10px;
+        padding: 10px;
+      }
+
+      .lucky {
+        margin-top: 15px;
+      }
+
+      .cta {
+        min-width: 190px;
+        padding: 11px 25px 12px;
+      }
+
+      .free-sticker {
+        display: none;
+      }
+
+      .scare-copy {
+        bottom: 12%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="parody-bar">整活版 · 非真实博彩广告 · 无充值入口</div>
+
+  <main class="stage">
+    <section class="ad" aria-label="整活广告">
+      <div class="coins" aria-hidden="true">
+        <i class="coin" style="--x: 4%; --s: 24px; --d: -1.2s; --t: 6.8s; --o: .62;">¥</i>
+        <i class="coin" style="--x: 14%; --s: 15px; --d: -3.4s; --t: 7.4s; --o: .5;">¥</i>
+        <i class="coin" style="--x: 26%; --s: 20px; --d: -5.1s; --t: 6.2s; --o: .45;">¥</i>
+        <i class="coin" style="--x: 39%; --s: 12px; --d: -2.2s; --t: 8.2s; --o: .5;">¥</i>
+        <i class="coin" style="--x: 55%; --s: 17px; --d: -4.4s; --t: 7.1s; --o: .42;">¥</i>
+        <i class="coin" style="--x: 68%; --s: 26px; --d: -6.2s; --t: 6.5s; --o: .58;">¥</i>
+        <i class="coin" style="--x: 81%; --s: 14px; --d: -1.8s; --t: 8.6s; --o: .45;">¥</i>
+        <i class="coin" style="--x: 92%; --s: 21px; --d: -4.8s; --t: 7.8s; --o: .52;">¥</i>
+        <i class="coin" style="--x: 49%; --s: 10px; --d: -.8s; --t: 9.2s; --o: .35;">¥</i>
+      </div>
+
+      <div class="stars" aria-hidden="true">
+        <i class="star" style="--x: 8%; --y: 18%; --s: 17px; --t: 2.2s; --d: -.4s;">✦</i>
+        <i class="star" style="--x: 88%; --y: 12%; --s: 11px; --t: 1.8s; --d: -.9s;">✧</i>
+        <i class="star" style="--x: 92%; --y: 63%; --s: 15px; --t: 2.8s; --d: -1.1s;">✦</i>
+        <i class="star" style="--x: 7%; --y: 69%; --s: 12px; --t: 2.1s; --d: -1.6s;">✧</i>
+        <i class="star" style="--x: 71%; --y: 88%; --s: 10px; --t: 1.6s; --d: -.5s;">✦</i>
+        <i class="star" style="--x: 23%; --y: 91%; --s: 9px; --t: 2.5s; --d: -1.3s;">✧</i>
+      </div>
+
+      <div class="ad-inner">
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <span>澳门新葡京娱乐城</span><span class="sep">✦</span>
+              <span>线上最刺激的 PG 游戏</span><span class="sep">✦</span>
+              <span>麻将胡了 · 麻将胡了二 · 赏金女王 · 寻宝黄金城 · 招财喵</span><span class="sep">✦</span>
+              <span>最高可达 5 万倍 / 10 万倍</span><span class="sep">✦</span>
+            </div>
+            <div class="marquee-group">
+              <span>澳门新葡京娱乐城</span><span class="sep">✦</span>
+              <span>线上最刺激的 PG 游戏</span><span class="sep">✦</span>
+              <span>麻将胡了 · 麻将胡了二 · 赏金女王 · 寻宝黄金城 · 招财喵</span><span class="sep">✦</span>
+              <span>最高可达 5 万倍 / 10 万倍</span><span class="sep">✦</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-row">
+          <div class="logo" aria-hidden="true">XPJ</div>
+          <div class="brand-copy">
+            <h1>澳门新葡京娱乐城</h1>
+            <p>线上最刺激的 <b>PG</b> 游戏</p>
+          </div>
+        </div>
+
+        <p class="eyebrow">经典弹窗复刻 · 同学专供 · 纯属整活</p>
+        <h2 class="headline">麻将胡了<span class="spark">✦</span></h2>
+
+        <div class="games" aria-label="游戏列表">
+          <span class="game">麻将胡了</span>
+          <span class="game">麻将胡了二</span>
+          <span class="game">赏金女王</span>
+          <span class="game">寻宝黄金城</span>
+          <span class="game">招财喵</span>
+          <span class="game">PG 电子</span>
+        </div>
+
+        <div class="jackpot">
+          <span class="jackpot-label">最高可达 / MAXIMUM WIN</span>
+          <strong><b class="jackpot-number" data-target="50000">50,000</b><span>×</span></strong>
+          <span class="slash">/</span>
+          <strong><b class="jackpot-number" data-target="100000">100,000</b><span>×</span></strong>
+          <small>5 万倍 / 10 万倍 · 仅为整活文案，不代表真实赔率</small>
+        </div>
+
+        <p class="lucky">下一位幸运儿就是<b>你</b></p>
+
+        <div class="lucky-meter" aria-hidden="true">
+          <div class="lucky-meter-head"><span>今日幸运值</span><b>97%</b></div>
+          <div class="lucky-meter-track"><i></i></div>
+          <small>就差一点点，再点一次试试</small>
+        </div>
+
+        <div class="cta-row">
+          <button class="cta" id="enter-button" type="button">立即进入</button>
+          <span class="free-sticker" aria-hidden="true"><small>限时</small><strong>免费</strong><small>体验</small></span>
+        </div>
+        <p class="domain">xpj.minecraftsnas.top</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="stamp">整活页面 · 请勿当真</span><br>
+      本页面是同学之间的娱乐广告复刻，<strong>不是真实博彩宣传</strong>，不提供任何游戏、充值、下注或提现入口。
+      页面中的游戏名称、倍率和“幸运儿”均为广告文案效果，<strong>xpj.minecraftsnas.top 不绑定任何游戏页面</strong>。
+    </footer>
+  </main>
+
+  <div class="scare" id="scare" hidden aria-hidden="true">
+    <div class="scare-face">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAj0lEQVR42u3bQQrAIAwEwLX0/19On1BIKSiZPYuHIWKIuJJUBufK8AAAAAAAgMm53xac3iQsFQAAAAAAAAC0+4Cv92xtvr8jAAAAAAAA9AH9/D0vKBUAAAAAAAAAHDsP2P3dwREAAAAAAAD6gHPvcRUAAAAAAAAAAAAAAAAAAAAApDPW928QAAAAAAAAmJkHuPwJhG4LD7gAAAAASUVORK5CYII=" alt="">
+    </div>
+    <div class="scare-copy">你被选中了<span>下一位幸运儿，就是你</span></div>
+  </div>
+
+  <div class="modal" id="joke-modal" role="dialog" aria-modal="true" aria-labelledby="joke-title" hidden>
+    <div class="modal-card">
+      <h2 id="joke-title">哈哈，吓到了吧！</h2>
+      <p>
+        这里没有赌场、没有充值入口，也没有 5 万倍。<br>
+        这只是给同学看的<strong>整活广告</strong>，
+        <strong>xpj.minecraftsnas.top</strong> 不会绑定任何游戏页面。
+      </p>
+      <button class="modal-close" id="close-button" type="button">关掉，回去学习</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const modal = document.getElementById('joke-modal');
+      const scare = document.getElementById('scare');
+      const openButton = document.getElementById('enter-button');
+      const closeButton = document.getElementById('close-button');
+      const counters = [...document.querySelectorAll('.jackpot-number')];
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let scareTimer = 0;
+      let scaring = false;
+
+      function openModal() {
+        modal.hidden = false;
+        closeButton.focus();
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        openButton.disabled = false;
+        openButton.focus();
+      }
+
+      function playScareSound() {
+        try {
+          const AudioCtor = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtor) return;
+
+          const ctx = new AudioCtor();
+          if (ctx.state === 'suspended') {
+            Promise.resolve(ctx.resume()).catch(() => {});
+          }
+          const now = ctx.currentTime + 0.02;
+
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(185, now);
+          osc.frequency.exponentialRampToValueAtTime(46, now + 0.42);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.exponentialRampToValueAtTime(0.075, now + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.55);
+          osc.connect(gain).connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.56);
+
+          const length = Math.floor(ctx.sampleRate * 0.24);
+          const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < length; i += 1) {
+            data[i] = (Math.random() * 2 - 1) * (1 - i / length);
+          }
+          const noise = ctx.createBufferSource();
+          const noiseGain = ctx.createGain();
+          noise.buffer = buffer;
+          noiseGain.gain.setValueAtTime(0.04, now);
+          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+          noise.connect(noiseGain).connect(ctx.destination);
+          noise.start(now);
+
+          window.setTimeout(() => {
+            ctx.close().catch(() => {});
+          }, 1200);
+        } catch {
+          // Audio is optional; the visual scare still works.
+        }
+      }
+
+      function finishScare() {
+        window.clearTimeout(scareTimer);
+        scare.hidden = true;
+        document.body.classList.remove('is-scaring');
+        openButton.disabled = false;
+        scaring = false;
+        openModal();
+      }
+
+      function triggerScare() {
+        if (scaring) return;
+
+        if (reducedMotion) {
+          openModal();
+          return;
+        }
+
+        scaring = true;
+        openButton.disabled = true;
+        document.body.classList.add('is-scaring');
+        scare.hidden = false;
+        playScareSound();
+        scareTimer = window.setTimeout(finishScare, 1350);
+      }
+
+      function animateJackpots() {
+        if (reducedMotion) return;
+
+        counters.forEach((counter) => {
+          counter.textContent = '0';
+        });
+
+        const startAt = performance.now() + 450;
+        const duration = 1800;
+
+        function frame(now) {
+          const progress = Math.min(Math.max((now - startAt) / duration, 0), 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+
+          counters.forEach((counter) => {
+            const target = Number(counter.dataset.target) || 0;
+            counter.textContent = Math.round(target * eased).toLocaleString('en-US');
+          });
+
+          if (progress < 1) window.requestAnimationFrame(frame);
+        }
+
+        window.requestAnimationFrame(frame);
+      }
+
+      openButton.addEventListener('click', triggerScare);
+      closeButton.addEventListener('click', closeModal);
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+
+      window.requestAnimationFrame(animateJackpots);
+    })();
+  </script>
+</body>
+</html>

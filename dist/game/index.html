@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#04060f">
+<title>霓虹幸存者 · NEON SURVIVOR</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game" aria-label="游戏画面"></canvas>
+<div class="fx scanlines"></div>
+<div class="fx vignette"></div>
+
+<header id="topbar" class="topbar hidden">
+  <div class="brand">NEON<span>//</span>SURVIVOR</div>
+  <div class="top-actions">
+    <button id="muteBtn" class="icon-btn" title="音效开关 (M)">♪</button>
+    <button id="pauseBtn" class="icon-btn" title="暂停 (Esc)">Ⅱ</button>
+  </div>
+</header>
+
+<div id="hud" class="hud hidden">
+  <div class="hud-stat left">
+    <div class="bar hp"><i id="hpFill"></i><span id="hpText">100 / 100</span></div>
+    <div class="bar xp"><i id="xpFill"></i><span id="xpText">XP 0 / 8</span></div>
+    <div class="chips">
+      <span class="chip" id="levelChip">LV.1</span>
+      <span class="chip dim" id="dashChip">冲刺就绪</span>
+      <span class="chip shield hidden" id="shieldChip">护盾 0</span>
+    </div>
+  </div>
+  <div class="hud-stat center">
+    <div id="timeText" class="timer">00:00</div>
+    <div class="wave" id="stageText">STAGE 1 / 8</div>
+    <div class="wave subwave" id="waveText">裂隙回廊</div>
+  </div>
+  <div class="hud-stat right">
+    <div class="score" id="scoreText">0</div>
+    <div class="sub"><span id="killsText">0</span> KILLS</div>
+    <div class="combo hidden" id="comboText">x1.0</div>
+  </div>
+</div>
+
+<div id="bossWrap" class="boss-wrap hidden">
+  <div class="boss-label"><span id="bossName">异常核心</span><span id="bossHpText">100%</span></div>
+  <div class="boss-bar"><i id="bossFill"></i></div>
+</div>
+
+<div id="banner" class="banner"><strong id="bannerTitle"></strong><small id="bannerSub"></small></div>
+
+<div id="mobile" class="mobile hidden">
+  <div id="joy" class="joy"><div class="joy-ring"></div><div id="joyKnob" class="joy-knob"></div></div>
+  <button id="dashBtn" class="dash-btn">冲刺<small>DASH</small></button>
+</div>
+
+<section id="title" class="screen title-screen">
+  <div class="title-glow"></div>
+  <p class="eyebrow">DATA WASTELAND // 8 SECTORS TO PURGE</p>
+  <h1>霓虹<span>幸存者</span></h1>
+  <p class="lede">穿越八片崩坏区域，<br>击穿八颗核心，终结荒原。</p>
+  <div class="title-actions">
+    <button id="startBtn" class="btn primary">开始生存 <kbd>Enter</kbd></button>
+    <button id="bossBtn" class="btn ghost">Boss 挑战</button>
+  </div>
+  <div class="title-meta">
+    <div><span>最高分</span><b id="bestScore">0</b></div>
+    <div><span>最长生存</span><b id="bestTime">00:00</b></div>
+    <div><span>版本</span><b>2.0</b></div>
+  </div>
+  <div class="howto">
+    <span class="desk"><kbd>WASD</kbd> 移动</span>
+    <span class="desk"><kbd>SPACE</kbd> 冲刺</span>
+    <span class="desk"><kbd>ESC</kbd> 暂停</span>
+    <span class="desk">自动索敌开火</span>
+    <span class="touch">左侧摇杆移动</span>
+    <span class="touch">右侧按钮冲刺</span>
+    <span class="touch">自动索敌开火</span>
+  </div>
+</section>
+
+<section id="tutorial" class="screen modal-screen hidden">
+  <div class="modal panel tutorial-panel">
+    <p class="eyebrow">FIELD MANUAL // 作战简报</p>
+    <h2>荒原生存指南</h2>
+    <p class="muted">武器自动开火、自动索敌。每关先清空指定数量的小怪，Boss 才会出现。</p>
+    <div class="tutorial-grid">
+      <div class="tutorial-item"><kbd>W A S D</kbd><div><strong>移动</strong><span>方向键同样可用</span></div></div>
+      <div class="tutorial-item"><kbd>自动</kbd><div><strong>开火 / 索敌</strong><span>优先锁定 Boss</span></div></div>
+      <div class="tutorial-item"><kbd>Space</kbd><div><strong>冲刺</strong><span>短暂无敌，可穿弹</span></div></div>
+      <div class="tutorial-item"><kbd>Esc</kbd><div><strong>暂停</strong><span>也可以点右上角暂停</span></div></div>
+      <div class="tutorial-item"><kbd>1 / 2 / 3</kbd><div><strong>选择升级</strong><span>升级时按数字直接选</span></div></div>
+      <div class="tutorial-item"><kbd>R</kbd><div><strong>刷新升级</strong><span>每级有一次重掷</span></div></div>
+      <div class="tutorial-item"><kbd>M</kbd><div><strong>静音</strong><span>切换音效</span></div></div>
+      <div class="tutorial-item"><kbd>Boss 挑战</kbd><div><strong>直接单挑</strong><span>标题界面选择关卡核心</span></div></div>
+    </div>
+    <div class="tutorial-goal">
+      <strong>目标</strong>
+      <span>清空每关的「击杀 / 目标」→ 击破 Boss → 进入下一关。Boss 会随血量进入第 2、3 阶段，并解锁新的攻击方式。</span>
+    </div>
+    <button id="tutorialStart" class="btn primary">进入标题 <kbd>Enter</kbd></button>
+  </div>
+</section>
+
+<section id="bossSelect" class="screen modal-screen hidden">
+  <div class="modal panel">
+    <p class="eyebrow">BOSS CHALLENGE</p>
+    <h2>直接挑战</h2>
+    <p class="muted">选择任意关卡核心，立即进入 Boss 战；系统会自动配置对应等级的预设构筑。</p>
+    <div id="bossGrid" class="boss-grid"></div>
+    <div class="modal-foot">
+      <span class="muted">终焉核心：20,000,000,000 HP</span>
+      <button id="bossBack" class="btn ghost">返回标题</button>
+    </div>
+  </div>
+</section>
+
+<section id="levelup" class="screen modal-screen hidden">
+  <div class="modal panel">
+    <p class="eyebrow">SYSTEM OVERCLOCK</p>
+    <h2>等级提升 <span id="levelNum">2</span></h2>
+    <p class="muted">选择一项强化，构建你的流派。</p>
+    <div id="cards" class="cards"></div>
+    <div class="modal-foot">
+      <span id="rerollHint" class="muted">每级可刷新一次</span>
+      <button id="rerollBtn" class="btn ghost">刷新 <kbd>R</kbd></button>
+    </div>
+  </div>
+</section>
+
+<section id="pause" class="screen modal-screen hidden">
+  <div class="modal panel small">
+    <p class="eyebrow">SIGNAL PAUSED</p>
+    <h2>已暂停</h2>
+    <p class="muted">喘口气。荒原不会等你太久。</p>
+    <div class="stack">
+      <button id="resumeBtn" class="btn primary">继续 <kbd>ESC</kbd></button>
+      <button id="quitBtn" class="btn ghost">返回标题</button>
+    </div>
+  </div>
+</section>
+
+<section id="gameover" class="screen modal-screen hidden">
+  <div class="modal panel">
+    <p class="eyebrow danger">SIGNAL LOST</p>
+    <h2>信号中断</h2>
+    <p class="muted">你的数据残片仍留在荒原里。</p>
+    <div class="result-grid">
+      <div><span>生存时间</span><b id="goTime">00:00</b></div>
+      <div><span>击杀</span><b id="goKills">0</b></div>
+      <div><span>得分</span><b id="goScore">0</b></div>
+      <div><span>等级</span><b id="goLevel">1</b></div>
+    </div>
+    <div class="stack row">
+      <button id="againBtn" class="btn primary">再来一局 <kbd>R</kbd></button>
+      <button id="menuBtn" class="btn ghost">返回标题</button>
+    </div>
+  </div>
+</section>
+
+<section id="victory" class="screen modal-screen hidden">
+  <div class="modal panel">
+    <p class="eyebrow good">CORE DESTROYED</p>
+    <h2>八区已净化</h2>
+    <p class="muted">八颗核心全部熄灭。荒原第一次迎来安静。</p>
+    <div class="result-grid">
+      <div><span>生存时间</span><b id="winTime">00:00</b></div>
+      <div><span>击杀</span><b id="winKills">0</b></div>
+      <div><span>得分</span><b id="winScore">0</b></div>
+      <div><span>等级</span><b id="winLevel">1</b></div>
+    </div>
+    <div class="stack row">
+      <button id="winAgainBtn" class="btn primary">再战一次</button>
+      <button id="winMenuBtn" class="btn ghost">返回标题</button>
+    </div>
+  </div>
+</section>
+
+<script src="game.js"></script>
+</body>
+</html>

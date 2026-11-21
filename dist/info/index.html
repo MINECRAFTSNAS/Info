@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d0a">
+  <meta name="description" content="MINECRAFT_SNAS 的个人网站：2018 年从网易版入坑，现在玩国际版的 Minecraft 玩家，喜欢 PVP、生存和探索。">
+  <meta name="author" content="MINECRAFT_SNAS">
+  <meta property="og:title" content="MINECRAFT_SNAS — PVP · 生存 · 探索">
+  <meta property="og:description" content="2018 年从网易版入坑，现在玩国际版的 Minecraft 玩家。喜欢 PVP、生存和探索。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <title>MINECRAFT_SNAS — PVP · 生存 · 探索</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20261114-3d2">
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      .intro { display: none !important; }
+      body.intro-active { overflow: auto !important; }
+    </style>
+  </noscript>
+</head>
+<body class="intro-active">
+  <div class="intro" id="intro" role="dialog" aria-modal="true" tabindex="-1" aria-label="MINECRAFT_SNAS 开场动画">
+    <div class="intro-field" aria-hidden="true">
+      <span class="intro-grid"></span>
+      <span class="intro-orb intro-orb--one"></span>
+      <span class="intro-orb intro-orb--two"></span>
+      <i class="intro-dust" style="--x: 12%; --y: 24%; --s: 4px; --d: 0.1s; --t: 4.8s;"></i>
+      <i class="intro-dust" style="--x: 83%; --y: 17%; --s: 3px; --d: 0.6s; --t: 5.6s;"></i>
+      <i class="intro-dust" style="--x: 23%; --y: 76%; --s: 5px; --d: 0.3s; --t: 6.2s;"></i>
+      <i class="intro-dust" style="--x: 72%; --y: 68%; --s: 3px; --d: 0.9s; --t: 5.2s;"></i>
+      <i class="intro-dust" style="--x: 91%; --y: 48%; --s: 2px; --d: 1.2s; --t: 4.4s;"></i>
+      <i class="intro-dust" style="--x: 8%; --y: 54%; --s: 2px; --d: 1.5s; --t: 6.8s;"></i>
+      <i class="intro-dust" style="--x: 46%; --y: 12%; --s: 2px; --d: 0.4s; --t: 5.8s;"></i>
+      <i class="intro-dust" style="--x: 62%; --y: 87%; --s: 4px; --d: 1.1s; --t: 6.4s;"></i>
+      <span class="intro-block intro-block--one"></span>
+      <span class="intro-block intro-block--two"></span>
+    </div>
+
+    <div class="intro-inner">
+      <p class="intro-status">
+        <span class="intro-signal"></span>
+        PLAYER FOUND
+        <span class="intro-status-muted">/ CHUNK READY</span>
+      </p>
+      <div class="intro-name" aria-hidden="true">
+        <span class="intro-letter intro-letter--1" style="--i: 0">M</span><span class="intro-letter intro-letter--2" style="--i: 1">I</span><span class="intro-letter intro-letter--3" style="--i: 2">N</span><span class="intro-letter intro-letter--4" style="--i: 3">E</span><span class="intro-letter intro-letter--5" style="--i: 4">C</span><span class="intro-letter intro-letter--6" style="--i: 5">R</span><span class="intro-letter intro-letter--7" style="--i: 6">A</span><span class="intro-letter intro-letter--8" style="--i: 7">F</span><span class="intro-letter intro-letter--9" style="--i: 8">T</span><span class="intro-letter intro-letter--10" style="--i: 9">_</span><span class="intro-letter intro-letter--11" style="--i: 10">S</span><span class="intro-letter intro-letter--12" style="--i: 11">N</span><span class="intro-letter intro-letter--13" style="--i: 12">A</span><span class="intro-letter intro-letter--14" style="--i: 13">S</span>
+      </div>
+      <p class="intro-tagline"><span class="intro-tagline-cn">正在进入我的世界</span><span class="intro-tagline-dot">·</span><span class="intro-tagline-en">PVP · SURVIVAL · EXPLORE</span></p>
+      <div class="intro-progress" aria-hidden="true"><span></span></div>
+    </div>
+
+    <button class="intro-skip" type="button" data-intro-skip>跳过动画 <kbd>ESC</kbd></button>
+    <span class="intro-corner intro-corner--tl" aria-hidden="true"></span>
+    <span class="intro-corner intro-corner--tr" aria-hidden="true"></span>
+    <span class="intro-corner intro-corner--bl" aria-hidden="true"></span>
+    <span class="intro-corner intro-corner--br" aria-hidden="true"></span>
+  </div>
+
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="MINECRAFT_SNAS 首页">
+        <svg class="brand-cube" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 2.5 28.5 9 16 15.5 3.5 9Z" fill="#7ee08b"/>
+          <path d="M3.5 9 16 15.5V29L3.5 22.5Z" fill="#244f32"/>
+          <path d="M28.5 9 16 15.5V29l12.5-6.5Z" fill="#3d9357"/>
+          <path d="M8 11.8 16 16l8-4.2" fill="none" stroke="#b4f6b9" stroke-width="1" opacity=".55"/>
+        </svg>
+        <span class="brand-text">
+          <strong>MINECRAFT_SNAS</strong>
+          <small>PVP · SURVIVAL · EXPLORER</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="primary-nav" aria-label="主导航">
+        <a href="#about"><span>01</span>关于</a>
+        <a href="#craft"><span>02</span>喜欢</a>
+        <a href="#journey"><span>03</span>轨迹</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">
+        <span class="nav-cta-dot"></span>
+        联系我
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-aurora" aria-hidden="true"></div>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow" data-reveal>
+            <span class="online-pill"><i></i> PLAYER ONLINE</span>
+            <span class="eyebrow-slash">/</span>
+            <span>OVERWORLD · SINCE 2018</span>
+          </p>
+
+          <h1 class="hero-title" id="hero-title" data-reveal>
+            <span class="hero-title-line">MINECRAFT_</span>
+            <span class="hero-title-line hero-title-line--accent">SNAS<span class="title-dot">.</span></span>
+          </h1>
+
+          <p class="hero-kicker" data-reveal>在方块与冒险之间，<br class="mobile-break">继续探索我的世界。</p>
+          <p class="hero-desc" data-reveal>Minecraft 玩家，喜欢 PVP、生存和探索。现在完全在国际版游玩。</p>
+
+          <div class="hero-actions" data-reveal>
+            <a class="btn btn--primary" href="#about">
+              <span>进入我的世界</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#craft">
+              <span>我的玩法</span>
+              <span class="btn-index">03</span>
+            </a>
+          </div>
+
+          <dl class="hero-stats" data-reveal>
+            <div>
+              <dt>入坑年份 <small>SINCE</small></dt>
+              <dd>2018</dd>
+            </div>
+            <div>
+              <dt>建筑评分 <small>BUILD</small></dt>
+              <dd><span data-count="20">20</span></dd>
+            </div>
+            <div>
+              <dt>PVP 评分 <small>PVP</small></dt>
+              <dd><span data-count="50">50</span></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-art" data-reveal>
+          <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+          <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+
+          <article class="player-card" data-tilt>
+            <div class="player-card-bar">
+              <span class="file-label"><span class="skin-avatar"><img src="assets/skin-face-64.png" alt="" width="18" height="18"></span> PLAYER FILE / 01</span>
+              <span class="card-online"><i></i> ONLINE</span>
+            </div>
+
+            <div class="player-viewport">
+              <div class="skin-stage" role="img" aria-label="MINECRAFT_SNAS 的 3D 皮肤，正在行走并旋转">
+                <div class="skin-floor" aria-hidden="true"></div>
+                <div class="skin-tilt" aria-hidden="true">
+                  <div class="skin-spinner">
+                    <div class="skin-bob">
+                      <div class="skin-model">
+                        <div class="skin-part skin-head">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-head-front"></span>
+                            <span class="skin-face skin-face--back tex-head-back"></span>
+                            <span class="skin-face skin-face--right tex-head-right"></span>
+                            <span class="skin-face skin-face--left tex-head-left"></span>
+                            <span class="skin-face skin-face--top tex-head-top"></span>
+                            <span class="skin-face skin-face--bottom tex-head-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-head-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-head-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-head-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-head-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-head-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-head-outer-bottom"></span>
+                          </div>
+                        </div>
+                        <div class="skin-part skin-body">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-body-front"></span>
+                            <span class="skin-face skin-face--back tex-body-back"></span>
+                            <span class="skin-face skin-face--right tex-body-right"></span>
+                            <span class="skin-face skin-face--left tex-body-left"></span>
+                            <span class="skin-face skin-face--top tex-body-top"></span>
+                            <span class="skin-face skin-face--bottom tex-body-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-body-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-body-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-body-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-body-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-body-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-body-outer-bottom"></span>
+                          </div>
+                        </div>
+                        <div class="skin-part skin-arm skin-arm--right">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-arm-front"></span>
+                            <span class="skin-face skin-face--back tex-arm-back"></span>
+                            <span class="skin-face skin-face--right tex-arm-right"></span>
+                            <span class="skin-face skin-face--left tex-arm-left"></span>
+                            <span class="skin-face skin-face--top tex-arm-top"></span>
+                            <span class="skin-face skin-face--bottom tex-arm-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-arm-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-arm-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-arm-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-arm-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-arm-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-arm-outer-bottom"></span>
+                          </div>
+                        </div>
+                        <div class="skin-part skin-arm skin-arm--left">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-arm-front"></span>
+                            <span class="skin-face skin-face--back tex-arm-back"></span>
+                            <span class="skin-face skin-face--right tex-arm-right"></span>
+                            <span class="skin-face skin-face--left tex-arm-left"></span>
+                            <span class="skin-face skin-face--top tex-arm-top"></span>
+                            <span class="skin-face skin-face--bottom tex-arm-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-arm-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-arm-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-arm-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-arm-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-arm-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-arm-outer-bottom"></span>
+                          </div>
+                        </div>
+                        <div class="skin-part skin-leg skin-leg--right">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-leg-front"></span>
+                            <span class="skin-face skin-face--back tex-leg-back"></span>
+                            <span class="skin-face skin-face--right tex-leg-right"></span>
+                            <span class="skin-face skin-face--left tex-leg-left"></span>
+                            <span class="skin-face skin-face--top tex-leg-top"></span>
+                            <span class="skin-face skin-face--bottom tex-leg-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-leg-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-leg-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-leg-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-leg-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-leg-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-leg-outer-bottom"></span>
+                          </div>
+                        </div>
+                        <div class="skin-part skin-leg skin-leg--left">
+                          <div class="skin-cuboid">
+                            <span class="skin-face skin-face--front tex-leg-front"></span>
+                            <span class="skin-face skin-face--back tex-leg-back"></span>
+                            <span class="skin-face skin-face--right tex-leg-right"></span>
+                            <span class="skin-face skin-face--left tex-leg-left"></span>
+                            <span class="skin-face skin-face--top tex-leg-top"></span>
+                            <span class="skin-face skin-face--bottom tex-leg-bottom"></span>
+                          </div>
+                          <div class="skin-cuboid skin-outer">
+                            <span class="skin-face skin-face--front tex-leg-outer-front"></span>
+                            <span class="skin-face skin-face--back tex-leg-outer-back"></span>
+                            <span class="skin-face skin-face--right tex-leg-outer-right"></span>
+                            <span class="skin-face skin-face--left tex-leg-outer-left"></span>
+                            <span class="skin-face skin-face--top tex-leg-outer-top"></span>
+                            <span class="skin-face skin-face--bottom tex-leg-outer-bottom"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skin-shadow" aria-hidden="true"></div>
+              </div>
+
+              <div class="viewport-shade" aria-hidden="true"></div>
+              <span class="viewport-corner viewport-corner--tl" aria-hidden="true"></span>
+              <span class="viewport-corner viewport-corner--tr" aria-hidden="true"></span>
+              <span class="viewport-corner viewport-corner--bl" aria-hidden="true"></span>
+              <span class="viewport-corner viewport-corner--br" aria-hidden="true"></span>
+
+              <div class="viewport-top">
+                <span class="viewport-mono">SNAPSHOT / 001</span>
+                <span class="viewport-level"><i></i> SINCE 2018</span>
+              </div>
+
+              <div class="viewport-nameplate">
+                <span class="nameplate-kicker">THE PLAYER</span>
+                <strong>MINECRAFT_SNAS</strong>
+                <span class="nameplate-sub">PVP / SURVIVAL / EXPLORER</span>
+              </div>
+
+              <span class="viewport-coords" aria-hidden="true">X 128 &nbsp; Y 64 &nbsp; Z -32</span>
+            </div>
+
+            <div class="player-card-meta">
+              <div><span>PLAYSTYLE</span><strong>PVP / SURVIVAL / EXPLORE</strong></div>
+              <div><span>BIOME</span><strong>OVERWORLD</strong></div>
+              <div><span>VERSION</span><strong>INTERNATIONAL</strong></div>
+            </div>
+          </article>
+
+          <div class="voxel-cube" aria-hidden="true">
+            <div class="voxel-face voxel-face--top"></div>
+            <div class="voxel-face voxel-face--front"></div>
+            <div class="voxel-face voxel-face--right"></div>
+            <div class="voxel-face voxel-face--left"></div>
+            <div class="voxel-face voxel-face--back"></div>
+            <div class="voxel-face voxel-face--bottom"></div>
+          </div>
+
+          <div class="float-chip float-chip--quest">
+            <span class="float-chip-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 10.5 12 6l7 4.5V17l-7 4-7-4Z"/><path d="M5 10.5 12 15l7-4.5M12 15v6"/></svg>
+            </span>
+            <span><small>CURRENT MODE</small><strong>PVP · SURVIVAL · EXPLORE</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-footer-line">
+        <span class="scroll-cue"><i></i> SCROLL TO EXPLORE</span>
+        <span class="hero-footer-coords" aria-hidden="true">SINCE 2018 · NETEASE → INTERNATIONAL</span>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>PVP</span><i></i><span>SURVIVE</span><i></i><span>EXPLORE</span><i></i><span>BUILD</span><i></i><span>REPEAT</span><i></i>
+        </div>
+        <div class="ticker-group">
+          <span>PVP</span><i></i><span>SURVIVE</span><i></i><span>EXPLORE</span><i></i><span>BUILD</span><i></i><span>REPEAT</span><i></i>
+        </div>
+      </div>
+    </div>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index" data-reveal><span>02</span> / ABOUT ME</p>
+          <div class="section-head-grid">
+            <h2 class="section-title" id="about-title" data-reveal>从网易版，<br><em>玩到国际版。</em></h2>
+            <p class="section-lead" data-reveal>PVP、生存、探索，还有一个用了很久的皮肤。</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-story" data-reveal>
+            <div class="skin-profile">
+              <span class="skin-profile-frame"><img src="assets/skin-face-64.png" alt="MINECRAFT_SNAS 的皮肤" width="56" height="56"></span>
+              <span class="skin-profile-copy"><small>MY SKIN</small><strong>MINECRAFT_SNAS</strong></span>
+            </div>
+            <p class="about-dropcap">我喜欢 PVP 的对抗和临场判断，也喜欢生存里从零开始的节奏。探索未知地形、看看世界还有什么，是我最放松的时候。</p>
+            <p>建筑自评 20，红石自评 2。</p>
+            <div class="signature">
+              <span class="signature-line"></span>
+              <span>MINECRAFT_SNAS</span>
+              <small>PLAYER SINCE 2018</small>
+            </div>
+            <ul class="trait-list" aria-label="个人标签">
+              <li>2018 网易版</li>
+              <li>花雨庭 PVP</li>
+              <li>2020 国际版</li>
+            </ul>
+          </div>
+
+          <aside class="stats-panel" data-reveal aria-label="玩家自评">
+            <div class="stats-panel-head">
+              <span class="mono-label">PLAYER STATS · SELF-RATED</span>
+              <span class="level-badge">2018 → NOW</span>
+            </div>
+            <div class="stats-bars">
+              <div class="stat-row">
+                <div class="stat-row-label"><span>建筑</span><small>BUILD</small></div>
+                <div class="stat-bar"><i style="--value: 20%"></i></div>
+                <span class="stat-value">20</span>
+              </div>
+              <div class="stat-row">
+                <div class="stat-row-label"><span>红石</span><small>REDSTONE</small></div>
+                <div class="stat-bar"><i style="--value: 2%"></i></div>
+                <span class="stat-value">2</span>
+              </div>
+              <div class="stat-row">
+                <div class="stat-row-label"><span>PVP</span><small>PVP</small></div>
+                <div class="stat-bar"><i style="--value: 50%"></i></div>
+                <span class="stat-value">50</span>
+              </div>
+            </div>
+            <div class="quest-line">
+              <div class="quest-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m15 9-2 5-4 2 2-5z"/></svg>
+              </div>
+              <div>
+                <small>CURRENT MODE</small>
+                <strong>PVP · 生存 · 探索</strong>
+              </div>
+              <span class="quest-progress">ONLINE</span>
+            </div>
+            <div class="stats-foot">
+              <span><i class="tag-dot tag-dot--green"></i> NETEASE START</span>
+              <span><i class="tag-dot tag-dot--gold"></i> INTERNATIONAL NOW</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section likes" id="craft" aria-labelledby="craft-title">
+      <div class="likes-word" aria-hidden="true">PLAY</div>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index" data-reveal><span>03</span> / WHAT I LIKE</p>
+          <div class="section-head-grid">
+            <h2 class="section-title" id="craft-title" data-reveal>我喜欢做的<br><em>三件事。</em></h2>
+            <p class="section-lead" data-reveal>PVP、生存、探索。没有复杂的分类，都是让我愿意一直打开游戏的理由。</p>
+          </div>
+        </div>
+
+        <div class="likes-list">
+          <article class="like-row like-row--pvp" data-reveal>
+            <span class="like-index">01</span>
+            <div class="like-heading">
+              <span class="like-en">COMBAT</span>
+              <h3>PVP</h3>
+            </div>
+            <p class="like-desc">喜欢和玩家正面对抗，享受每一次判断、走位和临场反应带来的胜负。</p>
+            <ul class="like-tags"><li>对战</li><li>操作</li><li>判断</li></ul>
+            <span class="like-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56"><path d="M12 44 40 16M34 10l12 12M44 12 12 44M16 10 4 22M10 16l6 6"/><path d="M8 48h8M40 48h8"/></svg>
+            </span>
+          </article>
+
+          <article class="like-row like-row--survival" data-reveal>
+            <span class="like-index">02</span>
+            <div class="like-heading">
+              <span class="like-en">SURVIVAL</span>
+              <h3>生存</h3>
+            </div>
+            <p class="like-desc">从零开始收集资源、搭建据点，在长期存档里慢慢建立自己的节奏。</p>
+            <ul class="like-tags"><li>开荒</li><li>据点</li><li>长期</li></ul>
+            <span class="like-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56"><path d="M10 26 28 14l18 12v16L28 54 10 42Z"/><path d="M10 26 28 38l18-12M28 38v16"/><path d="M22 33l6-4 6 4v7l-6 4-6-4z"/></svg>
+            </span>
+          </article>
+
+          <article class="like-row like-row--explore" data-reveal>
+            <span class="like-index">03</span>
+            <div class="like-heading">
+              <span class="like-en">EXPLORE</span>
+              <h3>探索</h3>
+            </div>
+            <p class="like-desc">去没去过的地方，看看地图边缘和地下还有什么，享受未知带来的惊喜。</p>
+            <ul class="like-tags"><li>地图</li><li>地形</li><li>冒险</li></ul>
+            <span class="like-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="18"/><path d="m34 22-4 10-10 4 4-10z"/><path d="M28 6v4M28 46v4M6 28h4M46 28h4"/></svg>
+            </span>
+          </article>
+        </div>
+
+        <p class="likes-footnote" data-reveal><span>PVP</span> / <span>SURVIVAL</span> / <span>EXPLORE</span> — 这就是我打开游戏的理由。</p>
+      </div>
+    </section>
+
+    <section class="section journey" id="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-index" data-reveal><span>04</span> / JOURNEY</p>
+          <div class="section-head-grid">
+            <h2 class="section-title" id="journey-title" data-reveal>从 2018，<br><em>走到现在。</em></h2>
+            <p class="section-lead" data-reveal>几个阶段，一直玩到现在。</p>
+          </div>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item" data-reveal>
+            <span class="timeline-year">2018</span>
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-tag">START · NETEASE</span>
+              <h3>网易版入坑</h3>
+              <p>第一次进入 Minecraft，从网易版开始。</p>
+            </div>
+          </li>
+          <li class="timeline-item" data-reveal>
+            <span class="timeline-year">2019</span>
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-tag">PVP · HUAYUTING</span>
+              <h3>进入 PVP 圈子</h3>
+              <p>开始在花雨庭玩 PVP，正式进入 PVP 圈子。</p>
+            </div>
+          </li>
+          <li class="timeline-item" data-reveal>
+            <span class="timeline-year">2020</span>
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-tag">MOVE · INTERNATIONAL</span>
+              <h3>转入国际版</h3>
+              <p>从网易版转到 Minecraft 国际版。</p>
+            </div>
+          </li>
+          <li class="timeline-item timeline-item--now" data-reveal>
+            <span class="timeline-year">NOW</span>
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-tag"><i></i> INTERNATIONAL</span>
+              <h3>完全在国际版</h3>
+              <p>现在完全在国际版游玩。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card" data-reveal>
+          <div class="contact-grid-bg" aria-hidden="true"></div>
+          <div class="contact-content">
+            <p class="section-index"><span>05</span> / NEXT BLOCK</p>
+            <h2 class="contact-title" id="contact-title">下一块方块，<br><em>等你一起放置。</em></h2>
+            <p class="contact-lead">想一起 PVP、生存或探索？复制我的游戏 ID，在游戏里找我。</p>
+            <div class="contact-actions">
+              <button class="btn btn--primary" type="button" id="copy-id" data-copy="2634645007">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="10" height="10" rx="1"/><path d="M4 13H3V3h10v1"/></svg>
+                <span>复制游戏 QQ</span>
+              </button>
+            </div>
+            <div class="player-id">
+              <span>GAME ID</span>
+              <strong>MINECRAFT_SNAS</strong>
+              <i aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="contact-art" aria-hidden="true">
+            <div class="contact-ring contact-ring--one"></div>
+            <div class="contact-ring contact-ring--two"></div>
+            <div class="contact-cube contact-cube--large">
+              <span class="contact-cube-top"></span>
+              <span class="contact-cube-left"></span>
+              <span class="contact-cube-right"></span>
+            </div>
+            <div class="contact-cube contact-cube--small">
+              <span class="contact-cube-top"></span>
+              <span class="contact-cube-left"></span>
+              <span class="contact-cube-right"></span>
+            </div>
+            <span class="contact-star contact-star--one">+</span>
+            <span class="contact-star contact-star--two">+</span>
+            <span class="contact-coords">X 0 &nbsp; Y 320 &nbsp; Z 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <a class="brand brand--footer" href="#top" aria-label="回到首页">
+        <svg class="brand-cube" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 2.5 28.5 9 16 15.5 3.5 9Z" fill="#7ee08b"/>
+          <path d="M3.5 9 16 15.5V29L3.5 22.5Z" fill="#244f32"/>
+          <path d="M28.5 9 16 15.5V29l12.5-6.5Z" fill="#3d9357"/>
+        </svg>
+        <span class="brand-text"><strong>MINECRAFT_SNAS</strong><small>PVP · SURVIVAL · EXPLORE</small></span>
+      </a>
+      <p class="footer-line">在方块与冒险之间，继续探索。</p>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a href="#about">关于</a>
+        <a href="#craft">喜欢</a>
+        <a href="#journey">轨迹</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year>2026</span> MINECRAFT_SNAS</span>
+      <span class="footer-made">BUILT WITH BLOCKS &amp; NODE.JS</span>
+      <a class="back-top" href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js?v=20261114-3d2" defer></script>
+</body>
+</html>

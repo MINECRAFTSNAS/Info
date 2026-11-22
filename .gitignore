@@ -1,0 +1,4 @@
+config.yml
+.edge-*
+node_modules/
+*.log

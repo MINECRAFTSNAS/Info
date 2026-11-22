@@ -7,7 +7,7 @@
 <meta name="screen-orientation" content="landscape">
 <meta name="x5-orientation" content="landscape">
 <title>霓虹幸存者 · NEON SURVIVOR</title>
-<link rel="stylesheet" href="style.css?v=20261122f">
+<link rel="stylesheet" href="style.css?v=20261122g">
 </head>
 <body>
 <canvas id="game" aria-label="游戏画面"></canvas>
@@ -17,8 +17,9 @@
 <div id="rotateHint" class="rotate-hint">
   <div class="rotate-icon">▭</div>
   <h2>请横屏游玩</h2>
-  <p>旋转手机至横屏，获得完整的战场视野。</p>
-  <button id="rotateBtn" class="btn primary">进入横屏</button>
+  <p id="rotateNote">旋转手机至横屏，获得完整的战场视野。</p>
+  <button id="rotateBtn" class="btn primary">尝试横屏</button>
+  <button id="portraitBtn" class="btn ghost hidden">仍然竖屏游玩</button>
 </div>
 
 <header id="topbar" class="topbar hidden">
@@ -185,6 +186,6 @@
   </div>
 </section>
 
-<script src="game.js?v=20261122f"></script>
+<script src="game.js?v=20261122g"></script>
 </body>
 </html>

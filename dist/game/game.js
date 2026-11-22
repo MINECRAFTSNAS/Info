@@ -10,12 +10,15 @@ const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
 let VW = 1, VH = 1;
 
 function resize() {
-  VW = Math.max(320, window.innerWidth);
-  VH = Math.max(320, window.innerHeight);
+  const cssW = Math.max(320, window.innerWidth);
+  const cssH = Math.max(320, window.innerHeight);
+  const zoom = worldZoom();
+  VW = cssW / zoom;
+  VH = cssH / zoom;
   canvas.width = Math.floor(VW * DPR);
   canvas.height = Math.floor(VH * DPR);
-  canvas.style.width = VW + 'px';
-  canvas.style.height = VH + 'px';
+  canvas.style.width = cssW + 'px';
+  canvas.style.height = cssH + 'px';
 }
 window.addEventListener('resize', resize);
 resize();
@@ -749,6 +752,14 @@ async function tryLockLandscape() {
 }
 const rotateBtn = $('rotateBtn');
 if (rotateBtn) rotateBtn.addEventListener('click', tryLockLandscape);
+const isWeChat = /MicroMessenger/i.test(navigator.userAgent || '');
+const portraitBtn = $('portraitBtn');
+if (isWeChat && portraitBtn) {
+  portraitBtn.classList.remove('hidden');
+  const note = $('rotateNote');
+  if (note) note.textContent = '微信内置浏览器通常无法锁定横屏。请点击右上角菜单选择「在浏览器打开」；也可以先竖屏游玩。';
+  portraitBtn.addEventListener('click', () => document.documentElement.classList.add('portrait-play'));
+}
 $('startBtn').addEventListener('click', startGame);
 $('resumeBtn').addEventListener('click', resumeGame);
 $('pauseBtn').addEventListener('click', pauseGame);
@@ -1647,7 +1658,8 @@ function spawnPointNear() {
 }
 function aimRange() { return Math.min(880, Math.max(560, Math.min(VW, VH) * 0.82)); }
 function isCoarseMobile() { return !!(window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches); }
-function mobileBossScale() { return isCoarseMobile() ? 0.58 : 1; }
+function worldZoom() { return isCoarseMobile() ? 0.75 : 1; }
+function mobileBossScale() { return isCoarseMobile() ? 0.5 : 1; }
 function spawnEnemy(type, x, y, opts) {
   if (enemies.length >= MAX_ENEMIES) return null;
   const t = ENEMY_TYPES[type] || ENEMY_TYPES.grunt;

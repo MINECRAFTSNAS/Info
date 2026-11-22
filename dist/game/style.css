@@ -17,6 +17,8 @@ body{position:fixed;inset:0;user-select:none}
 .rotate-hint{display:none;position:fixed;inset:0;z-index:300;background:#04060f;color:#e6f6ff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:12px}
 .rotate-hint h2{margin:0;font-size:30px;letter-spacing:.08em}
 .rotate-hint p{margin:0 0 10px;color:#92a8c2;font-size:12px;line-height:1.7}
+.rotate-hint .btn{min-width:190px}
+html.portrait-play .rotate-hint{display:none!important}
 .rotate-icon{font-size:64px;line-height:1;color:#67e8f9;transform:rotate(90deg);text-shadow:0 0 22px rgba(103,232,249,.65);animation:rotatePulse 1.6s ease-in-out infinite}
 @keyframes rotatePulse{0%,100%{transform:rotate(90deg) scale(1)}50%{transform:rotate(90deg) scale(1.12)}}
 @media (orientation:portrait) and (hover:none) and (pointer:coarse){

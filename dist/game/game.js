@@ -1795,11 +1795,6 @@ function updateBoss(e, dt) {
       bossRing(e, 16 + e.phase * 4, 145 + e.phase * 20, 11 + e.phase * 2, 'orb', '#ff5c8a');
       e.ringTimer = 2.3 - e.phase * 0.3;
     }
-    e.aimTimer -= dt;
-    if (e.aimTimer <= 0) {
-      bossAim(e, 5 + e.phase * 2, 0.11, 235, 12 + e.phase * 2, 'shard', '#fb7185');
-      e.aimTimer = 1.9 - e.phase * 0.25;
-    }
     e.summonTimer -= dt;
     if (e.summonTimer <= 0) { bossSummon(e, 'grunt', 2); e.summonTimer = 6; }
     if (e.phase > 0) {

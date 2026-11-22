@@ -225,6 +225,17 @@ kbd{display:inline-block;padding:2px 6px;border:1px solid rgba(255,255,255,.18);
   .howto{font-size:8px;gap:7px 10px}
   .tutorial-panel,.panel{max-height:96vh}
 }
+@media (hover:none) and (pointer:coarse){
+  .top-actions{scale:.78;transform-origin:top right}
+  .hud-stat.left{scale:.78;transform-origin:top left}
+  .hud-stat.center{scale:.78;transform-origin:top center}
+  .hud-stat.right{scale:.78;transform-origin:top right}
+  .boss-wrap{scale:.78;transform-origin:top center}
+  .banner{scale:.78;transform-origin:top center}
+  .joy{scale:.78;transform-origin:bottom left}
+  .dash-btn{scale:.78;transform-origin:bottom right}
+  .combo{transform-origin:right center}
+}
 @media (max-width:760px){
   .topbar{padding:12px 14px}
   .brand{display:none}

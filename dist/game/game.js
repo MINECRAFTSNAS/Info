@@ -1658,7 +1658,7 @@ function spawnPointNear() {
 }
 function aimRange() { return Math.min(880, Math.max(560, Math.min(VW, VH) * 0.82)); }
 function isCoarseMobile() { return !!(window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches); }
-function worldZoom() { return isCoarseMobile() ? 0.75 : 1; }
+function worldZoom() { return isCoarseMobile() ? 0.68 : 1; }
 function mobileBossScale() { return isCoarseMobile() ? 0.5 : 1; }
 function spawnEnemy(type, x, y, opts) {
   if (enemies.length >= MAX_ENEMIES) return null;

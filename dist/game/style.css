@@ -14,6 +14,14 @@ body{position:fixed;inset:0;user-select:none}
   mix-blend-mode:overlay;opacity:.5}
 .vignette{background:radial-gradient(ellipse at center,transparent 42%,rgba(0,0,0,.58) 100%)}
 .hidden{display:none!important}
+.rotate-hint{display:none;position:fixed;inset:0;z-index:300;background:#04060f;color:#e6f6ff;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:12px}
+.rotate-hint h2{margin:0;font-size:30px;letter-spacing:.08em}
+.rotate-hint p{margin:0 0 10px;color:#92a8c2;font-size:12px;line-height:1.7}
+.rotate-icon{font-size:64px;line-height:1;color:#67e8f9;transform:rotate(90deg);text-shadow:0 0 22px rgba(103,232,249,.65);animation:rotatePulse 1.6s ease-in-out infinite}
+@keyframes rotatePulse{0%,100%{transform:rotate(90deg) scale(1)}50%{transform:rotate(90deg) scale(1.12)}}
+@media (orientation:portrait) and (hover:none) and (pointer:coarse){
+  .rotate-hint{display:flex}
+}
 .muted{color:var(--muted)}
 .danger{color:#ff5c8a!important}.good{color:#5eead4!important}
 
@@ -198,6 +206,23 @@ kbd{display:inline-block;padding:2px 6px;border:1px solid rgba(255,255,255,.18);
 .dash-btn small{display:block;margin-top:4px;font:8px/1 Consolas,monospace;letter-spacing:.14em;opacity:.55}
 .dash-btn:active{background:rgba(255,61,139,.35)}
 
+@media (max-height:520px) and (hover:none) and (pointer:coarse){
+  .topbar{padding:7px 12px}
+  .hud{padding:38px 12px 10px;gap:4px}
+  .timer{font-size:22px}
+  .wave{font-size:7px}
+  .score{font-size:18px}
+  .bar{height:12px}.bar.xp{height:8px}
+  .boss-wrap{top:52px;width:64vw}
+  .boss-label{font-size:8px}
+  .title-screen{padding:16px 20px;justify-content:center}
+  h1{font-size:clamp(36px,10vh,58px)}
+  .lede{font-size:11px;margin-bottom:12px}
+  .title-actions{margin-bottom:14px}
+  .title-meta{margin-bottom:12px;gap:14px}
+  .howto{font-size:8px;gap:7px 10px}
+  .tutorial-panel,.panel{max-height:96vh}
+}
 @media (max-width:760px){
   .topbar{padding:12px 14px}
   .brand{display:none}

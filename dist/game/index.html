@@ -4,13 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#04060f">
+<meta name="screen-orientation" content="landscape">
+<meta name="x5-orientation" content="landscape">
 <title>霓虹幸存者 · NEON SURVIVOR</title>
-<link rel="stylesheet" href="style.css?v=20261122c">
+<link rel="stylesheet" href="style.css?v=20261122f">
 </head>
 <body>
 <canvas id="game" aria-label="游戏画面"></canvas>
 <div class="fx scanlines"></div>
 <div class="fx vignette"></div>
+
+<div id="rotateHint" class="rotate-hint">
+  <div class="rotate-icon">▭</div>
+  <h2>请横屏游玩</h2>
+  <p>旋转手机至横屏，获得完整的战场视野。</p>
+  <button id="rotateBtn" class="btn primary">进入横屏</button>
+</div>
 
 <header id="topbar" class="topbar hidden">
   <div class="brand">NEON<span>//</span>SURVIVOR</div>
@@ -176,6 +185,6 @@
   </div>
 </section>
 
-<script src="game.js?v=20261122c"></script>
+<script src="game.js?v=20261122f"></script>
 </body>
 </html>
